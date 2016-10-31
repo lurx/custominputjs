@@ -2,7 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-@import "https://fonts.googleapis.com/css?family=Patua+One|Source+Code+Pro";
+@import "https://fonts.googleapis.com/css?family=Patua+One|Source+Code+Pro|Inconsolata";
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -52,40 +52,104 @@ font-family: 'Source Code Pro', monospace;
 ****/
 HTML {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  text-align: center; }
+  font-size: 16px; }
 
-BODY {
-  background: #333;
-  color: #fff; }
+.wrapper {
+  width: 80%;
+  margin: 0 auto; }
 
-H1 {
-  font-family: 'Patua One', cursive;
-  font-size: 5rem;
-  position: relative;
-  display: inline-block; }
-  H1 P {
-    font-size: 25%;
-    position: absolute;
-    bottom: -0.5em;
-    right: 6em;
-    color: #228DFF;
-    transition: 0.5s all linear;
-    text-shadow: 0 0 10px #FFF, 0 0 20px #FFF, 0 0 30px #FFF, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF; }
-    H1 P:after {
-      content: '< in development >';
-      position: absolute;
-      top: 0;
-      left: 0;
-      text-shadow: 0 0 10px transparent, 0 0 20px transparent, 0 0 30px transparent, 0 0 40px transparent, 0 0 70px transparent, 0 0 80px transparent, 0 0 100px transparent, 0 0 150px transparent;
-      text-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.7); }
-    H1 P:hover {
-      color: #fff;
-      animation: neon 1.5s ease-in-out infinite alternate;
-      animation-delaty: 0.5s; }
-
-.container {
+MAIN {
   margin-top: 3rem; }
+
+SECTION {
+  min-height: calc(100vh - 3rem);
+  padding: 1rem 0; }
+  SECTION:nth-child(odd) {
+    background: #999; }
+
+.treeView {
+  font-family: 'Inconsolata', monospace; }
+  .treeView UL {
+    display: block; }
+  .treeView input[type="checkbox"] {
+    vertical-align: middle;
+    display: none; }
+    .treeView input[type="checkbox"] + LABEL {
+      display: block;
+      font-weight: bold;
+      transition: 0.5s color linear; }
+      .treeView input[type="checkbox"] + LABEL:before {
+        content: "\f196";
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        margin: 0.25rem 0.5rem;
+        vertical-align: middle; }
+      .treeView input[type="checkbox"] + LABEL SPAN {
+        font-size: 85%;
+        color: rgba(68, 68, 68, 0.55); }
+      .treeView input[type="checkbox"] + LABEL + DIV {
+        overflow: hidden;
+        padding-left: 1.8rem;
+        max-height: 0;
+        transition: max-height 0.8s; }
+        .treeView input[type="checkbox"] + LABEL + DIV EM {
+          color: #990099;
+          font-weight: bold;
+          font-style: italic; }
+    .treeView input[type="checkbox"] ~ UL {
+      max-height: 0;
+      overflow: hidden;
+      margin: 0 0.85rem;
+      padding: 0 1rem;
+      transition: max-height 0.8s; }
+    .treeView input[type="checkbox"]:checked + LABEL {
+      color: #990099; }
+      .treeView input[type="checkbox"]:checked + LABEL:before {
+        content: "\f147"; }
+      .treeView input[type="checkbox"]:checked + LABEL + DIV {
+        max-height: 100rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid;
+        margin-left: 1.8rem; }
+    .treeView input[type="checkbox"]:checked ~ UL {
+      max-height: 100000px;
+      transition: max-height 0.8s; }
+  .treeView LABEL {
+    vertical-align: middle; }
+  .treeView .hasSubTree {
+    position: relative; }
+    .treeView .hasSubTree > * > UL:after {
+      content: "},";
+      font-weight: bold; }
+    .treeView .hasSubTree > LI > UL > LI {
+      position: relative;
+      border-left: 1px solid #990099; }
+      .treeView .hasSubTree > LI > UL > LI:first-child:before, .treeView .hasSubTree > LI > UL > LI:last-child:after {
+        content: '';
+        width: 0.5rem;
+        height: 1px;
+        display: inline-block;
+        position: absolute;
+        left: 0; }
+      .treeView .hasSubTree > LI > UL > LI:first-child:before {
+        border-top: 1px solid #990099;
+        top: 0; }
+      .treeView .hasSubTree > LI > UL > LI:last-child:after {
+        border-bottom: 1px solid #990099;
+        bottom: 0; }
+    .treeView .hasSubTree > LI > INPUT[type="checkbox"] + LABEL:after {
+      content: " { ... },"; }
+    .treeView .hasSubTree > LI > INPUT[type="checkbox"]:checked + LABEL:after {
+      content: " {"; }
+    .treeView .hasSubTree.noComma > * > UL:after {
+      content: "}";
+      font-weight: bold; }
+    .treeView .hasSubTree.noComma > LI > INPUT[type="checkbox"] + LABEL:after {
+      content: " { ... }"; }
 
 .textInput {
   display: inline-block;
@@ -163,19 +227,63 @@ H1 {
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF; }
   to {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
-NAV LABEL {
-  display: block; }
-NAV input[type="checkbox"] {
-  display: none; }
-  NAV input[type="checkbox"] ~ UL {
-    overflow: hidden;
-    max-width: 10px;
-    max-height: 10px;
+HEADER {
+  background: #777;
+  height: 3rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1; }
+  HEADER H1 {
+    font-family: 'Patua One', cursive;
+    font-size: 2rem;
+    position: relative;
     display: inline-block;
-    transition: 0.75s all linear; }
-  NAV input[type="checkbox"]:checked ~ UL {
-    background: red;
-    max-width: 1000000px;
-    max-height: 1000000px; }
+    vertical-align: middle;
+    width: 25%; }
+    HEADER H1:after {
+      content: '< status: \00a0\00a0\00a0\00a0\00a0\00a0 pre-alpha >';
+      font-size: 40%;
+      position: absolute;
+      bottom: -0.5em;
+      right: 4.25em;
+      color: #fff;
+      transition: 0.5s all linear; }
+  HEADER NAV {
+    display: inline-block;
+    line-height: 100%;
+    vertical-align: middle;
+    width: 70%;
+    position: relative; }
+    HEADER NAV A {
+      color: #333;
+      text-decoration: none; }
+    HEADER NAV LI {
+      display: inline-block;
+      padding: 0 0.5rem;
+      line-height: 3rem;
+      transition: 0.3s all linear;
+      font-size: 1rem; }
+      HEADER NAV LI A {
+        transition: 0.3s all linear; }
+      HEADER NAV LI:hover {
+        background: #990099; }
+        HEADER NAV LI:hover A {
+          color: #fff; }
+      HEADER NAV LI.title {
+        padding: 0 0 0 1.5rem;
+        font-family: 'Patua One', cursive;
+        font-size: 1rem;
+        vertical-align: top; }
+        HEADER NAV LI.title:hover {
+          background: transparent; }
+      HEADER NAV LI.docs {
+        float: right;
+        font-family: 'Patua One', cursive;
+        font-size: 1.3rem; }
+      HEADER NAV LI.github {
+        float: right;
+        font-size: 2.3rem; }
 
 /*# sourceMappingURL=style.css.map */

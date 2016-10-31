@@ -2,90 +2,366 @@
 <html>
 
 <head>
-    <title>Custom Input jQuery Plugin</title>
-    <link rel="stylesheet" href="style/style.css">
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-    <script src="js/custominput.js"></script>
+	<title>Custom Input jQuery Plugin</title>
+	<link rel="stylesheet" href="style/style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+	<script src="js/general.js"></script>
+	<script src="js/custominput.js"></script>
 </head>
 
 <body>
-    <h1>
-       Custom Input Plugin
-       <p>&lt; in development &gt;</p>
-    </h1>
-    
-    <nav>
-        <input type="checkbox" id="navToggle">
-        <label for="navToggle">Input Types:&nbsp;</label>
-        <ul>
-            <li>
-                <a href="javascript:void(0);">Number</a>
-            </li>
-        </ul>
-    </nav>
 
-    <div class="container">
-        <div>
-            <label>Text input:</label>
-            <div class="demoText"></div>
-            <p>vs.</p>
-            <div class="textInput theme-default">
-                <input type="text" class="textInputValue" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit!">
-                </span>
-                <i class="fa fa-pencil"></i>
-            </div>
-        </div>
-        <div>
-            <label>Number input:</label>
-            <div class="demoNumber"></div>
-        </div>
-        <h3>vs. HTML5 Default Number Input</h3>
-        <input type="number" name="demoNum" id="demoNum" value="0" />
-    </div>
-    <script>
-        $(document).ready(function() {
-            //plugin usage. play with comments and values to change.
-            //$('.demoNumber').createInput({});
+<header>
+	<div class="wrapper">
+		<h1>Custom Input Plugin</h1>
+		<nav>
+			<ul>
+				<li><a href="#textSection">About</a></li>
+				<li class="title">Demo:</li>
+				<li><a href="#textSection">Text</a></li>
+				<li><a href="#numSection">Number</a></li>
+				<!--<li><a href="#">Password</a></li>-->
+				<!--<li><a href="#">Textarea</a></li>-->
 
-            $('.demoNumber').createInput({
-                inputType: 'number', //Input type. Defaults to Number (will be text)
-                //theme: 'yourThemeNameHere',	//Theme class name.
-                number: {
-                    values: {
-                        //defaultValue: 4,	    //Input value. Defaults to 0
-                        //maxValue: 54,		    //Maximum allowed value. Defaults to null.
-                        //minValue: 0,		    //Minimum allowed value. Defaults to null.
-                        //step: 3,			    //Steps. Defaults to 1.
-                        allowDecimal: true //Allow use of decimal point. Defaults to false.
-                    },
-                    plusBtn: {
-                        //btnClass: 'plusBtn',	//supports multiple classes
-                        //btnText: '+'
-                    },
-                    minusButton: {
-                        //btnClass: 'minusBtn',	//supports multiple classes
-                        //btnText: '-'
-                    }
+				<li class="github" title="Fork on gitHub"><a href="https://github.com/lurx/custominputjs" target="_blank"><i class="fa fa-github"></i></a></li>
+				<li class="docs"><a href="#docsSection">Docs</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+<main>
+	<section id="docsSection" class="docs">
+		<div class="wrapper">
+			<div class="treeView">
+				<ul class="hasSubTree noComma">
+					<li>
+						<input type="checkbox" id="createInput" checked/>
+						<label for="createInput">.createInput</label>
+						<ul>
+							<li>
+								<input type="checkbox" id="inputType"/>
+								<label for="inputType">inputType: <span>string</span></label>
 
-                }
-            });
+								<div>
+									Input type <br>
+									Accpets: "<em>number</em>", "<em>text</em>" <br>
+									Default: "<em>number</em>"
+								</div>
+							</li>
 
-            $('.demoText').createInput({
-                inputType: 'text', //Input type. Defaults to Number (will be text)
-                //theme: 'yourThemeNameHere',	//Theme class name.
-                text: {
-                    values: {
-                        defaultValue: '', //Input value. Defaults to ''
-                        placeholder: 'test',
-                        maxLength: 8
-                    }
-                }
-            });
+							<li>
+								<input type="checkbox" id="inputClass"/>
+								<label for="inputClass">inputClass: <span>string</span></label>
 
-        });
+								<div>
+									class(es) for personalized CSS/JS<br>
+									Default: "<em></em>"
+								</div>
+							</li>
 
-    </script>
+							<li>
+								<input type="checkbox" id="inputImportFontAwesome"/>
+								<label for="inputImportFontAwesome">importFontAwesome: <span>boolean</span></label>
+
+								<div>
+									If true, FontAwesome (v4.6.3) will be loaded from maxcdn for default icons<br>
+									Default: <em>true</em>
+								</div>
+							</li>
+
+
+							<li>
+								<input type="checkbox" id="theme"/>
+								<label for="theme">theme: <span>string</span></label>
+
+								<div>
+									theme CSS class name <br>
+									Default: '<em>theme-default</em>'
+								</div>
+							</li>
+							<li>
+								<ul class="hasSubTree">
+									<li>
+										<input type="checkbox" id="number"/>
+										<label for="number">number</label>
+										<ul class="hasSubTree">
+											<li>
+												<input type="checkbox" id="numberValues"/>
+												<label for="numberValues">values</label>
+												<ul>
+													<li>
+														<input type="checkbox" id="numberDefaultValue"/>
+														<label for="numberDefaultValue">defaultValue: <span>integer</span></label>
+
+														<div>
+															Default value for number input<br>
+															Default: <em>0</em>
+														</div>
+													</li>
+													<li>
+														<input type="checkbox" id="numberMaxValue"/>
+														<label for="numberMaxValue">maxValue: <span>integer</span></label>
+
+														<div>
+															Maximum value for number input.<br>
+															Default: <em>null</em> (no max value)
+														</div>
+													</li>
+													<li>
+														<input type="checkbox" id="numberMinValue"/>
+														<label for="numberMinValue">minValue: <span>integer</span></label>
+
+														<div>
+															Minimum value for number input.<br>
+															Default: <em>null</em> (no min value)
+														</div>
+													</li>
+													<li>
+														<input type="checkbox" id="numberStep"/>
+														<label for="numberStep">step: <span>integer</span></label>
+
+														<div>
+															The value by which the number is incremented by clicking +/-.<br>
+															Default: <em>1</em>
+														</div>
+													</li>
+
+
+
+													<li>
+														<input type="checkbox" id="numberAllowDecimal"/>
+														<label for="numberAllowDecimal">allowDecimal: <span>boolean</span></label>
+
+														<div>
+															Enable/disable the use of a decimal point<br>
+															Default: <em>false</em>
+														</div>
+													</li>
+												</ul>
+											</li>
+											<li>
+												<input type="checkbox" id="numberPlusBtn"/>
+												<label for="numberPlusBtn">plusBtn</label>
+												<ul>
+													<li>
+														<input type="checkbox" id="numberPlusBtnClass"/>
+														<label for="numberPlusBtnClass">class: <span>string</span></label>
+
+														<div>
+															CSS Class for Plus/Up Button<br>
+															Default: '<em>plusBtn</em>'
+														</div>
+													</li>
+													<li>
+														<input type="checkbox" id="numberMinusBtnText"/>
+														<label for="numberMinusBtnText">btnText: <span>integer</span></label>
+
+														<div>
+															Maximum value for number input.<br>
+															Default: <em>null</em> (no max value)
+														</div>
+													</li>
+												</ul>
+											</li>
+											<li>
+												<input type="checkbox" id="numberMinusBtn"/>
+												<label for="numberMinusBtn">minusBtn</label>
+												<ul>
+													<li>
+														<input type="checkbox" id="numberMinusBtnClass"/>
+														<label for="numberMinusBtnClass">class: <span>string</span></label>
+
+														<div>
+															CSS Class for Minus/Down Button<br>
+															Default: '<em>minusBtn</em>'
+														</div>
+													</li>
+													<li>
+														<input type="checkbox" id="numberMinusBtnText"/>
+														<label for="numberMinusBtnText">btnText: <span>string</span></label>
+
+														<div>
+															Text for the button.<br>
+															Default: '<em>+</em>'
+														</div>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<ul class="hasSubTree">
+									<li>
+										<input type="checkbox" id="text"/>
+										<label for="text">text</label>
+										<ul class="hasSubTree">
+											<li>
+												<input type="checkbox" id="textValues"/>
+												<label for="textValues">values</label>
+												<ul>
+													<li>
+														<input type="checkbox" id="textDefaultValue"/>
+														<label for="textDefaultValue">defaultValue: <span>string</span></label>
+
+														<div>
+															Default value for text input<br>
+															Default: '<em></em>'
+														</div>
+													</li>
+													<li>
+														<input type="checkbox" id="textMaxValue"/>
+														<label for="textMaxValue">placeholder: <span>string</span></label>
+
+														<div>
+															Placeholder for text input.<br>
+															Default: '<em></em>'
+														</div>
+													</li>
+													<li>
+														<input type="checkbox" id="textMinValue"/>
+														<label for="textMinValue">maxLength: <span>integer</span></label>
+
+														<div>
+															Maximum amount of characters for text input.<br>
+															Default: <em>null</em> (no max characters)
+														</div>
+													</li>
+													<li>
+														<input type="checkbox" id="textStep"/>
+														<label for="textStep">step: <span>integer</span></label>
+
+														<div>
+															The value by which the number is incremented by clicking +/-.<br>
+															Default: <em>1</em>
+														</div>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section id="textSection">
+		<div class="wrapper">
+			<p>
+				Text input. Creates a default text input and applies styles to it
+			</p>
+		</div>
+	</section>
+	<section id="numSection">
+		<div class="wrapper">
+			<div>
+				<label>Number input:</label>
+
+				<div class="demoNumber"></div>
+			</div>
+			<h3>vs. HTML5 Default Number Input</h3>
+			<input type="number" name="demoNum" id="demoNum" value="0"/>
+		</div>
+	</section>
+
+</main>
+
+
+<div style="display: none;">
+	<h1>
+		Custom Input Plugin
+		<p>&lt; in development &gt;</p>
+	</h1>
+
+	<nav>
+		<input type="checkbox" id="navToggle">
+		<label for="navToggle">Input Types:&nbsp;</label>
+		<ul>
+			<li>
+				<a href="javascript:void(0);">Number</a>
+			</li>
+		</ul>
+	</nav>
+
+	<div class="container">
+		<div>
+			<label>Text input:</label>
+
+			<div class="demoText"></div>
+			<p>vs.</p>
+
+			<div class="textInput theme-default">
+				<input type="text" class="textInputValue" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit!">
+				</span>
+				<i class="fa fa-pencil"></i>
+			</div>
+		</div>
+		<div>
+			<label>Number input:</label>
+
+			<div class="demoNumber"></div>
+		</div>
+		<h3>vs. HTML5 Default Number Input</h3>
+		<input type="number" name="demoNum" id="demoNum" value="0"/>
+	</div>
+</div>
+<script>
+	$(document).ready(function () {
+		$('NAV UL LI A').click(function(e){
+			var $scrollTarget = $(this).attr('href');
+			var $scrollDest = ($($scrollTarget).offset().top - $('header').height());
+
+			$('html, body').animate({
+				'scrollTop':   $scrollDest
+			}, 500);
+		});
+
+		//plugin usage. play with comments and values to change.
+		//$('.demoNumber').createInput({});
+
+		$('.demoNumber').createInput({
+			inputType: 'number', //Input type. Defaults to Number (will be text)
+			//theme: 'yourThemeNameHere',	//Theme class name.
+			number: {
+				values: {
+					//defaultValue: 4,	    //Input value. Defaults to 0
+					//maxValue: 54,		    //Maximum allowed value. Defaults to null.
+					//minValue: 0,		    //Minimum allowed value. Defaults to null.
+					//step: 3,			    //Steps. Defaults to 1.
+					allowDecimal: true //Allow use of decimal point. Defaults to false.
+				},
+				plusBtn: {
+					//btnClass: 'plusBtn',	//supports multiple classes
+					//btnText: '+'
+				},
+				minusButton: {
+					//btnClass: 'minusBtn',	//supports multiple classes
+					//btnText: '-'
+				}
+
+			}
+		});
+
+		$('.demoText').createInput({
+			inputType: 'text', //Input type. Defaults to Number (will be text)
+			//theme: 'yourThemeNameHere',	//Theme class name.
+			text: {
+				values: {
+					defaultValue: '', //Input value. Defaults to ''
+					placeholder: 'test',
+					maxLength: 8
+				}
+			}
+		});
+
+	});
+
+</script>
 </body>
 
 </html>

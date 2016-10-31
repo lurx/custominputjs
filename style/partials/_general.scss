@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css?family=Patua+One|Source+Code+Pro';
+@import 'https://fonts.googleapis.com/css?family=Patua+One|Source+Code+Pro|Inconsolata';
 
 /****
 font-family: 'Patua One', cursive; 
@@ -8,44 +8,156 @@ font-family: 'Source Code Pro', monospace;
 HTML {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
-	text-align: center;
 }
 
 BODY {
-	background: #333;
-	color: #fff;
+	//background: #333;
 }
 
-H1 {
-	@include headingFont(5rem);
-	position: relative;
-	display: inline-block;
-	P {
-		font-size: 25%;
-		position: absolute;
-		bottom: -0.5em;
-		right: 6em;
-		color: #228DFF;
-		transition: 0.5s all linear;
-		@include neonLight;
-		&:after {
-			content: '< in development >';
-			position: absolute;
-			top: 0;
-			left: 0;
-			@include neonLight(transparent, transparent);
-			text-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.7);
-		}
-		&:hover {
-			color: #fff;
-			animation: neon 1.5s ease-in-out infinite alternate;
-			animation-delaty: 0.5s;
-		}
+.wrapper {
+	width: 80%;
+	margin: 0 auto;
+}
+
+MAIN {
+	margin-top: 3rem;
+}
+
+SECTION {
+	min-height: calc(100vh - 3rem);
+	padding: 1rem 0;
+	&:nth-child(odd) {
+		background: #999;
+	}
+	&.docs {
 	}
 }
 
-.container {
-	margin-top: 3rem;
+.treeView {
+	font-family: 'Inconsolata', monospace;
+	UL {
+		display: block;
+		//background: rgba($highlightColor,0.1);
+	}
+	input[type="checkbox"] {
+		vertical-align: middle;
+		display: none;
+		& + LABEL {
+			display: block;
+			font-weight: bold;
+			transition: 0.5s color linear;
+			&:before {
+				content: "\f196";
+				display: inline-block;
+				font: normal normal normal 14px/1 FontAwesome;
+				font-size: inherit;
+				text-rendering: auto;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				margin: 0.25rem 0.5rem;
+				vertical-align: middle;
+			}
+			SPAN {
+				font-size: 85%;
+				color: rgba(#444, 0.55);
+			}
+			& + DIV {
+				overflow: hidden;
+				padding-left: 1.8rem;
+				max-height: 0;
+				transition: max-height 0.8s;
+				EM {
+					color: $highlightColor;
+					font-weight: bold;
+					font-style: italic;
+				}
+			}
+		}
+		& ~ UL {
+			max-height: 0;
+			overflow: hidden;
+			margin: 0 0.85rem;
+			padding: 0 1rem;
+			transition: max-height 0.8s;
+		}
+
+		&:checked {
+			& + LABEL {
+				color: $highlightColor;
+				&:before {
+					content: "\f147";
+				}
+				& + DIV {
+					max-height: 100rem;
+					padding: 0.5rem 1rem;
+					border: 1px solid;
+					margin-left: 1.8rem;
+				}
+			}
+			& ~ UL {
+				max-height: 100000px;
+				transition: max-height 0.8s;
+			}
+		}
+	}
+	LABEL {
+		vertical-align: middle;
+	}
+	.hasSubTree {
+		position: relative;
+		& > * > UL:after {
+			content: "},";
+			font-weight: bold;
+		}
+		& > LI > UL {
+			> LI {
+				position: relative;
+				border-left: 1px solid $highlightColor;
+				&:first-child:before,
+				&:last-child:after {
+					content: '';
+					width: 0.5rem;
+					height: 1px;
+					display: inline-block;
+					position: absolute;
+					left: 0;
+				}
+				&:first-child:before {
+					border-top: 1px solid $highlightColor;
+					top: 0;
+				}
+				&:last-child:after {
+					border-bottom: 1px solid $highlightColor;
+					bottom: 0;
+				}
+			}
+		}
+		& > LI > INPUT[type="checkbox"] {
+			& + LABEL {
+				&:after {
+					content: " { ... },"
+				}
+			}
+			&:checked + LABEL {
+				&:after {
+					content: " {"
+				}
+			}
+		}
+		&.noComma {
+			& > * > UL:after {
+				content: "}";
+				font-weight: bold;
+			}
+			& > LI > INPUT[type="checkbox"] {
+				& + LABEL {
+					&:after {
+						content: " { ... }"
+					}
+				}
+			}
+		}
+	}
 }
 
 .textInput {
@@ -136,12 +248,6 @@ H1 {
 		}
 	}
 }
-
-
-
-
-
-
 
 @-webkit-keyframes neon {
 	from {
