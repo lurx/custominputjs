@@ -1,0 +1,162 @@
+@import 'https://fonts.googleapis.com/css?family=Patua+One|Source+Code+Pro';
+
+/****
+font-family: 'Patua One', cursive; 
+font-family: 'Source Code Pro', monospace;
+****/
+
+HTML {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	text-align: center;
+}
+
+BODY {
+	background: #333;
+	color: #fff;
+}
+
+H1 {
+	@include headingFont(5rem);
+	position: relative;
+	display: inline-block;
+	P {
+		font-size: 25%;
+		position: absolute;
+		bottom: -0.5em;
+		right: 6em;
+		color: #228DFF;
+		transition: 0.5s all linear;
+		@include neonLight;
+		&:after {
+			content: '< in development >';
+			position: absolute;
+			top: 0;
+			left: 0;
+			@include neonLight(transparent, transparent);
+			text-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.7);
+		}
+		&:hover {
+			color: #fff;
+			animation: neon 1.5s ease-in-out infinite alternate;
+			animation-delaty: 0.5s;
+		}
+	}
+}
+
+.container {
+	margin-top: 3rem;
+}
+
+.textInput {
+	display: inline-block;
+	@include inputFont(1rem);
+	I, INPUT {
+		display: inline-block;
+		transition: 0.3s all linear;
+	}
+	INPUT {
+		@include inputFont(1rem);
+		background: transparent;
+		padding: 0 0.25rem 0 0.5rem;
+		color: #fff;
+		line-height: 2rem;
+		border: 0;
+		outline: none;
+		&:focus {
+			+ I {
+				opacity: 1;
+				padding: 0 0.5rem 0 0.25rem;
+				max-width: 100%;
+			}
+		}
+	}
+	I {
+		padding: 0;
+		line-height: 2rem;
+		opacity: 0;
+		max-width: 0;
+		cursor: pointer;
+	}
+	&:hover I {
+		padding: 0 0.5rem 0 0.25rem;
+		opacity: 1;
+		max-width: 100%;
+	}
+}
+
+.numInput {
+	//default Styles
+	display: inline-flex;
+	@include inputFont(1rem);
+	I, SPAN {
+		display: inline-block;
+		transition: 0.3s all linear;
+	}
+	SPAN {
+		order: 2;
+	}
+	I[class*=Btn] {
+		cursor: pointer;
+		&::selection {
+			background: transparent; 
+		}
+		&.plusBtn {
+			order: 3;
+		}
+		&.minusBtn {
+			order: 1;
+		}
+	}
+}
+
+.theme {
+	&-default {
+		//theme-default
+		$defaultThemeColor: #fff;
+		color: $defaultThemeColor;
+		border: 1px solid currentColor;
+		margin: 1rem;
+		line-height: 2rem;
+		padding: 0;
+		border-radius: 5px;
+		overflow: hidden;
+		.plusBtn, .minusBtn, SPAN[class*=Value] {
+			padding: 0 1rem;
+			height: 100%;
+		}
+		.plusBtn, .minusBtn {  //number Input buttons
+			&:hover {
+				background: $defaultThemeColor;
+				color: invert($defaultThemeColor);
+			}
+		}
+		SPAN[class*=Value]:focus { //editable field
+			outline: none;
+		}
+	}
+}
+
+
+
+
+
+
+
+@-webkit-keyframes neon {
+	from {
+		text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+	}
+	to {
+		text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+	}
+}
+
+@keyframes neon {
+	from {
+		text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+	}
+	to {
+		text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+	}
+}

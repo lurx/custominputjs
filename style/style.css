@@ -1,0 +1,181 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import "https://fonts.googleapis.com/css?family=Patua+One|Source+Code+Pro";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/****
+font-family: 'Patua One', cursive; 
+font-family: 'Source Code Pro', monospace;
+****/
+HTML {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  text-align: center; }
+
+BODY {
+  background: #333;
+  color: #fff; }
+
+H1 {
+  font-family: 'Patua One', cursive;
+  font-size: 5rem;
+  position: relative;
+  display: inline-block; }
+  H1 P {
+    font-size: 25%;
+    position: absolute;
+    bottom: -0.5em;
+    right: 6em;
+    color: #228DFF;
+    transition: 0.5s all linear;
+    text-shadow: 0 0 10px #FFF, 0 0 20px #FFF, 0 0 30px #FFF, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF; }
+    H1 P:after {
+      content: '< in development >';
+      position: absolute;
+      top: 0;
+      left: 0;
+      text-shadow: 0 0 10px transparent, 0 0 20px transparent, 0 0 30px transparent, 0 0 40px transparent, 0 0 70px transparent, 0 0 80px transparent, 0 0 100px transparent, 0 0 150px transparent;
+      text-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.7); }
+    H1 P:hover {
+      color: #fff;
+      animation: neon 1.5s ease-in-out infinite alternate;
+      animation-delaty: 0.5s; }
+
+.container {
+  margin-top: 3rem; }
+
+.textInput {
+  display: inline-block;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 1rem; }
+  .textInput I, .textInput INPUT {
+    display: inline-block;
+    transition: 0.3s all linear; }
+  .textInput INPUT {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1rem;
+    background: transparent;
+    padding: 0 0.25rem 0 0.5rem;
+    color: #fff;
+    line-height: 2rem;
+    border: 0;
+    outline: none; }
+    .textInput INPUT:focus + I {
+      opacity: 1;
+      padding: 0 0.5rem 0 0.25rem;
+      max-width: 100%; }
+  .textInput I {
+    padding: 0;
+    line-height: 2rem;
+    opacity: 0;
+    max-width: 0;
+    cursor: pointer; }
+  .textInput:hover I {
+    padding: 0 0.5rem 0 0.25rem;
+    opacity: 1;
+    max-width: 100%; }
+
+.numInput {
+  display: inline-flex;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 1rem; }
+  .numInput I, .numInput SPAN {
+    display: inline-block;
+    transition: 0.3s all linear; }
+  .numInput SPAN {
+    order: 2; }
+  .numInput I[class*=Btn] {
+    cursor: pointer; }
+    .numInput I[class*=Btn]::selection {
+      background: transparent; }
+    .numInput I[class*=Btn].plusBtn {
+      order: 3; }
+    .numInput I[class*=Btn].minusBtn {
+      order: 1; }
+
+.theme-default {
+  color: #fff;
+  border: 1px solid currentColor;
+  margin: 1rem;
+  line-height: 2rem;
+  padding: 0;
+  border-radius: 5px;
+  overflow: hidden; }
+  .theme-default .plusBtn, .theme-default .minusBtn, .theme-default SPAN[class*=Value] {
+    padding: 0 1rem;
+    height: 100%; }
+  .theme-default .plusBtn:hover, .theme-default .minusBtn:hover {
+    background: #fff;
+    color: black; }
+  .theme-default SPAN[class*=Value]:focus {
+    outline: none; }
+
+@-webkit-keyframes neon {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF; }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
+@keyframes neon {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF; }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
+NAV LABEL {
+  display: block; }
+NAV input[type="checkbox"] {
+  display: none; }
+  NAV input[type="checkbox"] ~ UL {
+    overflow: hidden;
+    max-width: 10px;
+    max-height: 10px;
+    display: inline-block;
+    transition: 0.75s all linear; }
+  NAV input[type="checkbox"]:checked ~ UL {
+    background: red;
+    max-width: 1000000px;
+    max-height: 1000000px; }
+
+/*# sourceMappingURL=style.css.map */

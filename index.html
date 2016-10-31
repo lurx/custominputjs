@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Custom Input jQuery Plugin</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src="js/custominput.js"></script>
+</head>
+
+<body>
+    <h1>
+       Custom Input Plugin
+       <p>&lt; in development &gt;</p>
+    </h1>
+    
+    <nav>
+        <input type="checkbox" id="navToggle">
+        <label for="navToggle">Input Types:&nbsp;</label>
+        <ul>
+            <li>
+                <a href="javascript:void(0);">Number</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div>
+            <label>Text input:</label>
+            <div class="demoText"></div>
+            <p>vs.</p>
+            <div class="textInput theme-default">
+                <input type="text" class="textInputValue" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit!">
+                </span>
+                <i class="fa fa-pencil"></i>
+            </div>
+        </div>
+        <div>
+            <label>Number input:</label>
+            <div class="demoNumber"></div>
+        </div>
+        <h3>vs. HTML5 Default Number Input</h3>
+        <input type="number" name="demoNum" id="demoNum" value="0" />
+    </div>
+    <script>
+        $(document).ready(function() {
+            //plugin usage. play with comments and values to change.
+            //$('.demoNumber').createInput({});
+
+            $('.demoNumber').createInput({
+                inputType: 'number', //Input type. Defaults to Number (will be text)
+                //theme: 'yourThemeNameHere',	//Theme class name.
+                number: {
+                    values: {
+                        //defaultValue: 4,	    //Input value. Defaults to 0
+                        //maxValue: 54,		    //Maximum allowed value. Defaults to null.
+                        //minValue: 0,		    //Minimum allowed value. Defaults to null.
+                        //step: 3,			    //Steps. Defaults to 1.
+                        allowDecimal: true //Allow use of decimal point. Defaults to false.
+                    },
+                    plusBtn: {
+                        //btnClass: 'plusBtn',	//supports multiple classes
+                        //btnText: '+'
+                    },
+                    minusButton: {
+                        //btnClass: 'minusBtn',	//supports multiple classes
+                        //btnText: '-'
+                    }
+
+                }
+            });
+
+            $('.demoText').createInput({
+                inputType: 'text', //Input type. Defaults to Number (will be text)
+                //theme: 'yourThemeNameHere',	//Theme class name.
+                text: {
+                    values: {
+                        defaultValue: '', //Input value. Defaults to ''
+                        placeholder: 'test',
+                        maxLength: 8
+                    }
+                }
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+@mixin headingFont($fontSize) {
+	font-family: 'Patua One', cursive; 
+	font-size: $fontSize;
+}
+
+@mixin inputFont($fontSize) {
+	font-family: 'Source Code Pro', monospace;
+	font-size: $fontSize;
+}
+
+@mixin neonLight($color:#228DFF, $brightColor:#FFF) {
+	text-shadow: 0 0 10px $brightColor, 0 0 20px $brightColor, 0 0 30px $brightColor, 0 0 40px $color, 0 0 70px $color, 0 0 80px $color, 0 0 100px $color, 0 0 150px $color;
+}

@@ -1,0 +1,22 @@
+NAV {
+    LABEL {
+        display: block;
+    }
+    input[type="checkbox"] {
+        display: none;
+        & ~ UL {
+            overflow: hidden;
+            max-width: 10px;
+            max-height: 10px;
+            display: inline-block;
+            transition: 0.75s all linear;
+        }
+        &:checked {
+            & ~ UL {
+                background: red; 
+                max-width: 1000000px;
+                max-height: 1000000px;
+            }
+        }
+    }
+}
