@@ -24,12 +24,29 @@ MAIN {
 }
 
 SECTION {
-	min-height: calc(100vh - 3rem);
+	min-height: calc(100vh - 6rem);
 	padding: 1rem 0;
 	&:nth-child(odd) {
 		background: #999;
 	}
 	&.docs {
+	}
+}
+
+FOOTER {
+	height: 3rem;
+	box-sizing: border-box;
+	padding: 1rem 0;
+	width: 100%;
+	background: $highlightColor;
+	color: #fff;
+	A {
+		color: #fff;
+		text-decoration: none;
+		transition: 0.5s linear;
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 }
 
@@ -171,7 +188,7 @@ SECTION {
 		@include inputFont(1rem);
 		background: transparent;
 		padding: 0 0.25rem 0 0.5rem;
-		color: #fff;
+		color: #FFF;
 		line-height: 2rem;
 		border: 0;
 		outline: none;
@@ -211,7 +228,7 @@ SECTION {
 	I[class*=Btn] {
 		cursor: pointer;
 		&::selection {
-			background: transparent; 
+			background: transparent;
 		}
 		&.plusBtn {
 			order: 3;
@@ -225,7 +242,7 @@ SECTION {
 .theme {
 	&-default {
 		//theme-default
-		$defaultThemeColor: #fff;
+		$defaultThemeColor: #FFF;
 		color: $defaultThemeColor;
 		border: 1px solid currentColor;
 		margin: 1rem;
@@ -237,13 +254,15 @@ SECTION {
 			padding: 0 1rem;
 			height: 100%;
 		}
-		.plusBtn, .minusBtn {  //number Input buttons
+		.plusBtn, .minusBtn {
+			//number Input buttons
 			&:hover {
 				background: $defaultThemeColor;
 				color: invert($defaultThemeColor);
 			}
 		}
-		SPAN[class*=Value]:focus { //editable field
+		SPAN[class*=Value]:focus {
+			//editable field
 			outline: none;
 		}
 	}
@@ -251,18 +270,18 @@ SECTION {
 
 @-webkit-keyframes neon {
 	from {
-		text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+		text-shadow: 0 0 10px #FFF, 0 0 20px #FFF, 0 0 30px #FFF, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
 	}
 	to {
-		text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+		text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
 	}
 }
 
 @keyframes neon {
 	from {
-		text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+		text-shadow: 0 0 10px #FFF, 0 0 20px #FFF, 0 0 30px #FFF, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
 	}
 	to {
-		text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+		text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
 	}
 }
