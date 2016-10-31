@@ -55,7 +55,7 @@ HEADER {
 					background: transparent;
 				}
 			}
-			&.docs {
+			&.docs, &.todoNav {
 				float: right;
 				@include headingFont(1.3rem);
 			}

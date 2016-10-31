@@ -1,0 +1,62 @@
+.todo .item {
+	input[type="checkbox"] {
+		display: none;
+		& + LABEL {
+			font-size: 2rem;
+			position: relative;
+			vertical-align: bottom;
+			&:before {
+				content: '';
+				width: 2rem;
+				height: 2rem;
+				display: inline-block;
+				border: 2px solid currentColor;
+				vertical-align: middle;
+				margin-right: 1rem;
+			}
+			+ P {
+				padding: 1rem;
+				overflow: hidden;
+				transition: 1s all linear;
+			}
+		}
+		&:checked {
+			& + LABEL {
+				color: darken(#F7F7F7, 25%);
+				&:before {
+					font-family: 'fontAwesome', sans-serif;
+					content: '\f00c';
+				}
+				&:after {
+					content: '';
+					position: absolute;
+					bottom: 0;
+					left: 2.6rem;
+					border-top: 2px solid currentColor;
+					height: calc(50% - 1px);
+					width: calc(105% - 2rem);
+					transform: rotateZ(-4deg);
+				}
+				+ P {
+					padding: 0 1rem;
+					height: 0;
+					visibility: hidden;
+				}
+			}
+		}
+	}
+	&.task:before,
+	&.bug:before {
+		font-size: 2rem;
+		width: 2rem;
+		vertical-align: bottom;
+		display: inline-block;
+		font-family: 'fontAwesome', sans-serif;
+	}
+	&.task:before {
+		content: '\f0ae';
+	}
+	&.bug:before {
+		content: '\f188';
+	}
+}
