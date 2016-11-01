@@ -219,7 +219,7 @@ FOOTER {
       order: 1; }
 
 .theme-default {
-  color: #FFF;
+  color: #000;
   border: 1px solid currentColor;
   margin: 1rem;
   line-height: 2rem;
